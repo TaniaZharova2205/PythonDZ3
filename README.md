@@ -126,8 +126,14 @@ docker-compose up --build
 
 Проект был задеплойен в интернет с помощью платформы [Render](https://dashboard.render.com/). 
 На основе кода этого репозитория, в этой платформе было развернуто 4 компонента сервиса:
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/render.png)
+
 
 1. FastAPI сервис (backend): API_URL: "https://pythondz3.onrender.com"
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/back.png)
 2. StreamLit сервис (frontend, пользовательский интерфейс): [PyLinkShort_webpage](https://pythondz3frontend.onrender.com)
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/front.png)
 3. PostgreSQL DB: `postgresql://@dpg-cvl8hgp5pdvs73daaf90-a.oregon-postgres.render.com:5432/links_as1r`
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/BD.png)
 4. Redis (key-value store): `redis://red-cvl9mdadbo4c73d96sp0:6379`
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/redis.png)
