@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: urlshort_links
+    environment:
+      POSTGRES_USER: urlshort_db
+      POSTGRES_PASSWORD: urlshortpass
+      POSTGRES_DB: urlshort_db
+      POSTGRESQL_LOG_STATEMENT: all
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - internal
+
+  redis:
+    image: redis:7-alpine
+    container_name: urlshort_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - internal
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: urlshort_backend
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - internal
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: urlshort_frontend
+    ports:
+      - "8501:8501"
+    depends_on:
+      - api
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
+
+volumes:
+  db_data:
