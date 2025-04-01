@@ -152,5 +152,3 @@ docker-compose up --build
 docker-compose up -d db redis api
 docker-compose up tests --build
 ```
-
-![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/test.html)
