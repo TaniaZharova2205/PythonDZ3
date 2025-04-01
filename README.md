@@ -44,33 +44,38 @@ PyLinkShort – сервис сокращения ссылок, позволяю
 PyLinkShort/
 ├── backend/
 │   ├── Dockerfile
+│   ├── Dockerfile.test
 │   ├── requirements.txt
 │   ├── .env              # Для локального тестирования
-│   └── app/
+│   ├── app/
+│   │    ├── init.py
+│   │    ├── main.py
+│   │    ├── api/
+│   │    │   ├── init.py
+│   │    │   ├── auth.py
+│   │    │   └── links.py
+│   │    ├── core/
+│   │    │   ├── init.py
+│   │    │   ├── cache.py
+│   │    │   ├── config.py
+│   │    │   ├── database.py
+│   │    │   └── security.py
+│   │    ├── models/
+│   │    │   ├── init.py
+│   │    │   ├── user.py
+│   │    │   └── link.py
+│   │    ├── schemas/
+│   │    │   ├── init.py
+│   │    │   ├── user.py
+│   │    │   └── link.py
+│   │    └── services/
+│   │        ├── init.py
+│   │        ├── analytics.py
+│   │        └── shortener.py
+│   └── tests/
 │       ├── init.py
-│       ├── main.py
-│       ├── api/
-│       │   ├── init.py
-│       │   ├── auth.py
-│       │   └── links.py
-│       ├── core/
-│       │   ├── init.py
-│       │   ├── cache.py
-│       │   ├── config.py
-│       │   ├── database.py
-│       │   └── security.py
-│       ├── models/
-│       │   ├── init.py
-│       │   ├── user.py
-│       │   └── link.py
-│       ├── schemas/
-│       │   ├── init.py
-│       │   ├── user.py
-│       │   └── link.py
-│       └── services/
-│           ├── init.py
-│           ├── analytics.py
-│           └── shortener.py
+│       ├── conftest.py
+│       └── requirements.txt
 ├── frontend/
 │   ├── Dockerfile
 │   ├── requirements.txt
@@ -137,3 +142,13 @@ docker-compose up --build
 ![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/BD.png)
 4. Redis (key-value store): `redis://red-cvl9mdadbo4c73d96sp0:6379`
 ![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/redis.png)
+
+5. **Тестирование**
+
+![Image alt](https://github.com/TaniaZharova2205/PythonDZ3/raw/main/image/test.png)
+
+Чтобы запустить тесты нужно выполнить:
+```bash
+docker-compose up -d db redis api
+docker-compose up tests --build
+```

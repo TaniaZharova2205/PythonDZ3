@@ -1,0 +1,6 @@
+pytest
+httpx 
+locust 
+pytest-mock 
+coverage
+pytest-cov
